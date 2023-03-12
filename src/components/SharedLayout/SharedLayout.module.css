@@ -1,15 +1,15 @@
-.nav {
+.NavLink {
+  display: inline-flex;
   padding: 20px;
-  background-color: white;
+  border-bottom: 2px solid transparent;
+  font-size: 22px;
+  font-weight: 700;
+  margin-right: 15px;
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
 }
-.nav > a {
-  color: #757575;
-  text-transform: uppercase;
-  padding: 15px;
-  border: 1px solid #757575;
-  border-radius: 4px;
-}
-.nav > a.active {
-  border: 1px solid #43b29d;
-  color: #43b29d;
+.NavLink.active {
+  border-bottom: 4px solid #2196f3;
+  color: #2196f3;
 }
