@@ -17,7 +17,7 @@ export const Home = () => {
     <main>
       <section className={css.gallery}>
         <div className={css.container}>
-          <h1 className={css.title}>Tranding today</h1>
+          <h1 className={css.title}>Trending today</h1>
           <MovieList movies={movies} />
         </div>
       </section>
