@@ -31,7 +31,7 @@ export const App = () => {
             <Route path="reviews" element={<Comments />} />
             <Route path="cast" element={<Cast />} />
           </Route>
-          <Route path="*" element={<ErrorPage />} />
+          <Route path="*" element={<Home />} />
         </Route>
       </Routes>
       </Suspense>
