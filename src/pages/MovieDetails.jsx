@@ -1,6 +1,7 @@
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect, Suspense } from 'react';
 import { getMovieInfo } from 'components/API/fetch';
+// import  Component as Arrow  from 'components/image/arrow-icon.png';
 import Loader from "components/Loader/Loader";
 import css from './MovieDetails.module.css';
 
@@ -31,7 +32,7 @@ export const MovieDetails = () => {
   const backLinkHref = location.state?.from ?? "/movies";
   return (
     <>
-    <Link to={backLinkHref}>Go back</Link>
+    <Link className={css.goBack} to={backLinkHref}>Go back</Link>
     <div className={css.movie}>
       <div className={css.imgContainer} width="240">
         <img

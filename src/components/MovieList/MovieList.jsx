@@ -6,7 +6,7 @@ export const MovieList = ({ movies }) => {
     <ul className={css.films}>
       {movies.map(movie => {
         return (
-          <Movie movie={movie}/>
+          <Movie key={movie.id} movie={movie}/>
         );
       })}
     </ul>

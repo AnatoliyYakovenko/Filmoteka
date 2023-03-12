@@ -14,8 +14,10 @@ export const Cast = () => {
   if (!cast) {
     return null;
   }
+  const isCast = !!cast.length;
   return (
     <>
+    {isCast? (
       <ul className={css.castContainer}>
         {cast.map(({ id, profile_path, original_name, character }) => {
           return (
@@ -35,6 +37,7 @@ export const Cast = () => {
           );
         })}
       </ul>
+    ) : (<p className={css.noCast}>There are no Cast!</p>)}
     </>
   );
 };

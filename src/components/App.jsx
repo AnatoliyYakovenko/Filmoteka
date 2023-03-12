@@ -1,4 +1,4 @@
-// import { lazy } from 'react';
+import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 
@@ -8,12 +8,12 @@ import { MovieDetails } from 'pages/MovieDetails';
 import { ErrorPage } from 'pages/ErrorPage';
 import { Cast } from './Cast/Cast';
 import { Comments } from './Comments/Comments';
-// import { MainLayout } from './MainLayout/MainLayout';
 
-// const Home = lazy(() => import('../pages/Home'));
-// const Movies = lazy(() => import('../pages/Movies'));
-// const MovieDetails = lazy(() => import('../pages/MovieDetails'));
-// const ErrorPage = lazy(() => import('../pages/ErrorPage'));
+
+// const Home = lazy(() => import('pages/Home'));
+// const Movies = lazy(() => import('pages/Movies'));
+// const MovieDetails = lazy(() => import('pages/MovieDetails'));
+// const ErrorPage = lazy(() => import('pages/ErrorPage'));
 // const Cast = lazy(() => import('./Cast/Cast'));
 // const Comments = lazy(() => import('./Comments/Comments'));
 

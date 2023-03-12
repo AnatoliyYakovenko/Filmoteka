@@ -34,3 +34,7 @@
   padding: 4px;
   word-wrap: break-word;
 }
+.noCast {
+  font-size: 32px;
+  font-weight: 600;
+}

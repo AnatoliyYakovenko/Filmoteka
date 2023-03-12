@@ -30,3 +30,7 @@
   color: rgb(44, 43, 43);
   font-style: italic;
 }
+.noReview {
+  font-size: 32px;
+  font-weight: 600;
+}
