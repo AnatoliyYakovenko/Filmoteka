@@ -1,3 +1,6 @@
+.nav {
+  background-color: dimgray;
+}
 .NavLink {
   display: inline-flex;
   padding: 20px;
