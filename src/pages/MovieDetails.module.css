@@ -1,15 +1,19 @@
+.backContainer {
+  padding-top: 20px;
+  padding-left: 20px;
+}
 .goBack {
-  margin-left: 20px;
-  margin-top: 20px;
+  padding: 5px;
   font-size: 32px;
   font-weight: 700;
-  color: #2196f3;
-  border: 1px solid #2196f3;
+  color: #0876d1;
+  border: 1px solid #0876d1;
   border-radius: 5px;
 }
 .detailLink {
-  color: #2196f3;
-  border: 1px solid #2196f3;
+  padding: 3px 5px;
+  color: #0876d1;
+  border: 1px solid #0876d1;
   border-radius: 5px;
 }
 .movie {

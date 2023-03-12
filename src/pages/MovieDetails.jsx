@@ -32,7 +32,9 @@ export const MovieDetails = () => {
   const backLinkHref = location.state?.from ?? "/movies";
   return (
     <>
+    <div className={css.backContainer}>
     <Link className={css.goBack} to={backLinkHref}>Go back</Link>
+    </div>
     <div className={css.movie}>
       <div className={css.imgContainer} width="240">
         <img
