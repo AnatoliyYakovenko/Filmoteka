@@ -36,7 +36,8 @@ export const MovieDetails = () => {
       <div className={css.imgContainer} width="240">
         <img
           className={css.image}
-          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : 'https://www.drupal.org/files/project-images/broken-image.jpg'}
+
           alt={original_title}
         />
       </div>
