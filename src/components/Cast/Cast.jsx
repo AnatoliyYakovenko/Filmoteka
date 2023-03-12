@@ -37,7 +37,7 @@ export const Cast = () => {
           );
         })}
       </ul>
-    ) : (<p className={css.noCast}>There are no Cast!</p>)}
+    ) : (<p className={css.noCast}>There is no cast!</p>)}
     </>
   );
 };
