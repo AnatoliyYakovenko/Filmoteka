@@ -12,7 +12,7 @@ export const Movie = ({movie}) => {
     >
       <div className={css.films__img}>
         <img
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'https://www.drupal.org/files/project-images/broken-image.jpg'}
           alt={movie.original_title}
           loading="lazy"
         />

@@ -1,6 +1,6 @@
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect, Suspense } from 'react';
-import { getMovieById } from 'services/movieAPI';
+import { getMovieInfo } from 'components/API/fetch';
 import Loader from "components/Loader/Loader";
 import css from './MovieDetails.module.css';
 
@@ -11,7 +11,7 @@ export const MovieDetails = () => {
   const { id } = useParams();
   useEffect(() => {
     if (!id) return;
-    getMovieById(id).then(movie => {
+    getMovieInfo(id).then(movie => {
       setMovie(movie);
     });
   }, [id]);

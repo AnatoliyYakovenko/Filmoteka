@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { MovieList } from 'components/MovieList/MovieList';
 import { useState, useEffect } from 'react';
-import { getTrendingMovie } from 'services/movieAPI';
+import { getTrendingMovie } from 'components/API/fetch';
 import css from './Home.module.css';
 import Loader from "components/Loader/Loader";
 

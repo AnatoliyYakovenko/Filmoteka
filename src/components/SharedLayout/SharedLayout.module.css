@@ -1,0 +1,15 @@
+.nav {
+  padding: 20px;
+  background-color: white;
+}
+.nav > a {
+  color: #757575;
+  text-transform: uppercase;
+  padding: 15px;
+  border: 1px solid #757575;
+  border-radius: 4px;
+}
+.nav > a.active {
+  border: 1px solid #43b29d;
+  color: #43b29d;
+}
