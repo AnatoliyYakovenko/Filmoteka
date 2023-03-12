@@ -61,8 +61,8 @@ export const MovieDetails = () => {
       </div>
       <div>
         <div className={css.btnContainer}>
-          <Link to="reviews" state={{ from: backLinkHref }}>Go through the reviews</Link>
-          <Link to="cast" state={{ from: backLinkHref }}>Get to know the team</Link>
+          <Link className={css.detailLink} to="reviews" state={{ from: backLinkHref }}>Go through the reviews</Link>
+          <Link className={css.detailLink} to="cast" state={{ from: backLinkHref }}>Get to know the team</Link>
         </div>
         <Suspense fallback={<Loader/>}>
         <Outlet />

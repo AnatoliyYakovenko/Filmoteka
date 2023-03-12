@@ -1,6 +1,16 @@
 .goBack {
+  margin-left: 20px;
+  margin-top: 20px;
   font-size: 32px;
   font-weight: 700;
+  color: #2196f3;
+  border: 1px solid #2196f3;
+  border-radius: 5px;
+}
+.detailLink {
+  color: #2196f3;
+  border: 1px solid #2196f3;
+  border-radius: 5px;
 }
 .movie {
   margin-top: 15px;
