@@ -7,7 +7,7 @@ import Loader from "components/Loader/Loader";
 import { Home } from 'pages/Home';
 import { Movies } from 'pages/Movies';
 import { MovieDetails } from 'pages/MovieDetails';
-import { ErrorPage } from 'pages/ErrorPage';
+// import { ErrorPage } from 'pages/ErrorPage';
 import { Cast } from './Cast/Cast';
 import { Comments } from './Comments/Comments';
 
