@@ -1,3 +1,4 @@
-export const ErrorPage = () => {
+export default function ErrorPage(){
   return <div>Something wrong!</div>
 }
+

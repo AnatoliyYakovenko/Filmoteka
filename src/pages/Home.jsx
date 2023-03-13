@@ -6,7 +6,7 @@ import { getTrendingMovie } from 'components/API/fetch';
 import css from './Home.module.css';
 import Loader from "components/Loader/Loader";
 
-export const Home = () => {
+export default function Home(){
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     getTrendingMovie().then(({ results }) => {
@@ -28,3 +28,4 @@ export const Home = () => {
 
   );
 };
+

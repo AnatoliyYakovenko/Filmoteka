@@ -4,7 +4,7 @@ import { getMovieByQuery } from 'components/API/fetch';
 import { MovieList } from 'components/MovieList/MovieList';
 import css from './Movies.module.css';
 
-export function Movies () {
+export default function Movies () {
   const [searchMovies, setSearchMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
@@ -22,7 +22,6 @@ export function Movies () {
   const handleSubmit = event => {
     event.preventDefault();
     setSearchParams({ query: searchQuery });
-
   };
 
   return (
