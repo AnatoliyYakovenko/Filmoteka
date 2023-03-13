@@ -15,7 +15,7 @@ export default function Movies () {
     if (!movieToSearch) return;
     setSearchQuery(movieToSearch);
     getMovieByQuery(movieToSearch).then(({ results }) => {
-      setSearchMovies(results);
+    setSearchMovies(results);
     });
   }, [movieToSearch]);
 
@@ -23,7 +23,7 @@ export default function Movies () {
     event.preventDefault();
     setSearchParams({ query: searchQuery });
   };
-
+  const isMovies = !!searchMovies.length;
   return (
     <>
       <header className={css.Searchbar}>
@@ -44,7 +44,7 @@ export default function Movies () {
         </form>
       </header>
       <main>
-        <MovieList movies={searchMovies} />
+       {isMovies ? (<MovieList movies={searchMovies} />) : (<p className={css.noFound}>Nothing found... Please try to search another movie!</p>)}
       </main>
     </>
   );
