@@ -5,9 +5,10 @@ import { MovieList } from 'components/MovieList/MovieList';
 import css from './Movies.module.css';
 
 export default function Movies () {
-  const [searchMovies, setSearchMovies] = useState([]);
+  const [searchMovies, setSearchMovies] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
   const movieToSearch = searchParams.get('query') ?? '';
 
@@ -21,9 +22,10 @@ export default function Movies () {
 
   const handleSubmit = event => {
     event.preventDefault();
+    setIsFormSubmitted(true);
     setSearchParams({ query: searchQuery });
   };
-  const isMovies = !!searchMovies.length;
+console.log(searchMovies);
   return (
     <>
       <header className={css.Searchbar}>
@@ -44,7 +46,8 @@ export default function Movies () {
         </form>
       </header>
       <main>
-       {isMovies ? (<MovieList movies={searchMovies} />) : (<p className={css.noFound}>Nothing found... Please try to search another movie!</p>)}
+       { isFormSubmitted && searchMovies?.length>0 && (<MovieList movies={searchMovies} />)}
+       { isFormSubmitted && searchMovies?.length<=0 && (<p className={css.noFound}>Nothing found... Please try to search another movie!</p>)}
       </main>
     </>
   );

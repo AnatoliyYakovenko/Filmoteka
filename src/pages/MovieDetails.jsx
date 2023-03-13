@@ -1,7 +1,7 @@
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect, Suspense } from 'react';
 import { getMovieInfo } from 'components/API/fetch';
-// import  Component as Arrow  from 'components/image/arrow-icon.png';
+// import { ReactComponent as Arrow } from 'image/arrow-icon.png';
 import Loader from "components/Loader/Loader";
 import css from './MovieDetails.module.css';
 
