@@ -25,7 +25,7 @@ export default function Movies () {
     setIsFormSubmitted(true);
     setSearchParams({ query: searchQuery });
   };
-console.log(searchMovies);
+
   return (
     <>
       <header className={css.Searchbar}>

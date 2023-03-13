@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getCast } from 'components/API/fetch';
 import css from './Cast.module.css';
-export const Cast = () => {
+export default function Cast(){
   const [cast, setCast] = useState(null);
   const { id } = useParams();
   useEffect(() => {

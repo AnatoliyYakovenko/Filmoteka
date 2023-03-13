@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { getReviews } from 'components/API/fetch';
 import css from './Comments.module.css';
 
-export const Comments = () => {
+export default function Comments(){
   const [reviews, setReviews] = useState(null);
   const { id } = useParams();
   useEffect(() => {
