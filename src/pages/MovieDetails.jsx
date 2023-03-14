@@ -30,6 +30,7 @@ export default function MovieDetails(){
     overview,
   } = movie;
   const backLinkHref = location.state?.from ?? "/movies";
+  console.log(backLinkHref);
   return (
     <>
     <div className={css.backContainer}>

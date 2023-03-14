@@ -20,6 +20,14 @@ export default function Movies () {
     });
   }, [movieToSearch]);
 
+  useEffect(()=>{
+    if (!movieToSearch) return;
+    getMovieByQuery(movieToSearch).then(({ results }) => {
+    setSearchMovies(results);
+      });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleSubmit = event => {
     event.preventDefault();
     setIsFormSubmitted(true);
@@ -46,7 +54,7 @@ export default function Movies () {
         </form>
       </header>
       <main>
-       { isFormSubmitted && searchMovies?.length>0 && (<MovieList movies={searchMovies} />)}
+       {searchMovies?.length>0 && (<MovieList movies={searchMovies} />)}
        { isFormSubmitted && searchMovies?.length<=0 && (<p className={css.noFound}>Nothing found... Please try to search another movie!</p>)}
       </main>
     </>
