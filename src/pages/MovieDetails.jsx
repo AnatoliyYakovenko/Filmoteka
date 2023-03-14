@@ -60,12 +60,12 @@ export default function MovieDetails(){
         </div>
         <h3 className={css.aboutTitle}>About</h3>
         <article className={css.aboutText}>{overview}</article>
-      </div>
-      <div>
         <div className={css.btnContainer}>
           <Link className={css.detailLink} to="reviews" state={{ from: backLinkHref }}>Go through the reviews</Link>
           <Link className={css.detailLink} to="cast" state={{ from: backLinkHref }}>Get to know the team</Link>
         </div>
+      </div>
+      <div>
         <Suspense fallback={<Loader/>}>
         <Outlet />
       </Suspense>
