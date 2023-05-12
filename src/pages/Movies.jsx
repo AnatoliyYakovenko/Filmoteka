@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getMovieByQuery } from 'components/API/fetch';
+// import { getAllMovies } from 'components/API/fetch';
 import { MovieList } from 'components/MovieList/MovieList';
+import GenresList  from 'components/GenresList/GenresList';
 import css from './Movies.module.css';
 
 export default function Movies () {
@@ -9,8 +11,16 @@ export default function Movies () {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  // const [allMovies, setAllMovies] = useState(null)
 
   const movieToSearch = searchParams.get('query') ?? '';
+
+  // useEffect(() => {
+  //   getAllMovies().then(({ results }) => {
+  //   setAllMovies(results);
+  //   });
+  //   console.log(results);
+  // }, []);
 
   useEffect(() => {
     if (!movieToSearch) return;
@@ -25,8 +35,7 @@ export default function Movies () {
     getMovieByQuery(movieToSearch).then(({ results }) => {
     setSearchMovies(results);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [movieToSearch]);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -52,6 +61,7 @@ export default function Movies () {
             onChange={e => setSearchQuery(e.target.value)}
           />
         </form>
+        <GenresList/>
       </header>
       <main>
        {searchMovies?.length>0 && (<MovieList movies={searchMovies} />)}

@@ -1,7 +1,6 @@
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect, Suspense } from 'react';
 import { getMovieInfo } from 'components/API/fetch';
-// import { ReactComponent as Arrow } from 'image/arrow-icon.png';
 import Loader from "components/Loader/Loader";
 import css from './MovieDetails.module.css';
 
@@ -30,7 +29,6 @@ export default function MovieDetails(){
     overview,
   } = movie;
   const backLinkHref = location.state?.from ?? "/movies";
-  console.log(backLinkHref);
   return (
     <>
     <div className={css.backContainer}>
