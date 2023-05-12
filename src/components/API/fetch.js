@@ -5,11 +5,15 @@ axios.defaults.params = {
   api_key: 'fcf8166cc673f1c39affaebc2a2648bc',
 };
 
-export const getAllMovies = async () => {
-  const { data } = await axios.get('/discover/movie');
-  return data;
+export const getAllMovies = async onFetch => {
+  try {
+    const { data } = await axios.get('/discover/movie');
+    onFetch(data.results);
+  } catch (error) {
+    console.log(error.message);
+  }
 };
-
+getAllMovies();
 export const getAllGenres = async onFetch => {
   try {
     const { data } = await axios.get('/genre/movie/list');

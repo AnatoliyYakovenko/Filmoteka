@@ -1,26 +1,25 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getMovieByQuery } from 'components/API/fetch';
-// import { getAllMovies } from 'components/API/fetch';
+import { getAllMovies } from 'components/API/fetch';
 import { MovieList } from 'components/MovieList/MovieList';
 import GenresList  from 'components/GenresList/GenresList';
 import css from './Movies.module.css';
 
 export default function Movies () {
+  const [allMovies, setAllMovies] = useState(null);
   const [searchMovies, setSearchMovies] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-  // const [allMovies, setAllMovies] = useState(null)
+
 
   const movieToSearch = searchParams.get('query') ?? '';
 
-  // useEffect(() => {
-  //   getAllMovies().then(({ results }) => {
-  //   setAllMovies(results);
-  //   });
-  //   console.log(results);
-  // }, []);
+  useEffect(() => {
+    getAllMovies(setAllMovies);
+  }, []);
+  console.log(allMovies);
 
   useEffect(() => {
     if (!movieToSearch) return;
@@ -30,12 +29,12 @@ export default function Movies () {
     });
   }, [movieToSearch]);
 
-  useEffect(()=>{
-    if (!movieToSearch) return;
-    getMovieByQuery(movieToSearch).then(({ results }) => {
-    setSearchMovies(results);
-      });
-  }, [movieToSearch]);
+  // useEffect(()=>{
+  //   if (!movieToSearch) return;
+  //   getMovieByQuery(movieToSearch).then(({ results }) => {
+  //   setSearchMovies(results);
+  //     });
+  // }, [movieToSearch]);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -64,7 +63,7 @@ export default function Movies () {
         <GenresList/>
       </header>
       <main>
-       {searchMovies?.length>0 && (<MovieList movies={searchMovies} />)}
+       {searchMovies?.length>0 ? (<MovieList movies={searchMovies} />): allMovies?.length>0 && (<MovieList movies={allMovies}/>)}
        { isFormSubmitted && searchMovies?.length<=0 && (<p className={css.noFound}>Nothing found... Please try to search another movie!</p>)}
       </main>
     </>

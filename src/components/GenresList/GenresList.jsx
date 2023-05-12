@@ -9,28 +9,6 @@ import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 
-import css from './GenresList.module.css';
-
-
-
-
-// export const GenresList = () => {
-
-// console.log(genres);
-//   return (
-//     <>
-
-//         <ul>
-//           {genres && genres.map((genre) => (
-//             <li key={genre.id}>
-//               <h3>{genre.name}</h3>
-//             </li>
-//           ))}
-//         </ul>
-//     </>
-//   );
-// };
-
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -78,7 +56,7 @@ export default function GenresList() {
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
-          {genres.map((genre) => (
+          {genres && genres.map((genre) => (
             <MenuItem key={genre.id} value={genre.name}>
               <Checkbox checked={genreName.indexOf(genre.name) > -1} />
               <ListItemText primary={genre.name} />
