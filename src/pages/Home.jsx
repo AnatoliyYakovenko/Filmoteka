@@ -13,12 +13,16 @@ export default function Home(){
       setMovies(results);
     });
   }, []);
+  const handleRemoveFromFavorites = (movieId) => {
+    const updatedMovies = movies.filter((movie) => movie.id !== movieId);
+    localStorage.setItem('favoriteMovies', JSON.stringify(updatedMovies));
+  };
   return (
     <main>
       <section className={css.gallery}>
         <div className={css.container}>
           <h1 className={css.title}>Trending today</h1>
-          <MovieList movies={movies} />
+          <MovieList movies={movies} onRemoveFromFavorites={handleRemoveFromFavorites} />
         </div>
       </section>
       <Suspense fallback={<Loader/>}>

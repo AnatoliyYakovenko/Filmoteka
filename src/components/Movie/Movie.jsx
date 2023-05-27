@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ReactComponent as Heart } from 'image/heart-icon.svg';
+import { ReactComponent as HeartFilled } from 'image/heart-filled-icon.svg';
 import css from './Movie.module.css';
 
 export const Movie = ({movie, onRemoveFromFavorites}) => {
@@ -39,7 +40,7 @@ export const Movie = ({movie, onRemoveFromFavorites}) => {
 
 
   return (
-    <>
+    <div className={css.wrapper}>
     <Link
       to={`/movies/${movie.id}`}
       className={css.films__item}
@@ -52,13 +53,11 @@ export const Movie = ({movie, onRemoveFromFavorites}) => {
           alt={movie.original_title}
           loading="lazy"
         />
-
       </div>
       </Link>
       <div className={css.films__description}>
         <p className={css.films__name}>{movie.title || movie.name}</p>
         <div className={css.films__container}>
-        <button className={css.favoriteBtn} type="button" onClick={toggleFavorite} > {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}<Heart/></button>
           <p className={css.films__info}>
             {movie.release_date || movie.first_air_date}
           </p>
@@ -67,6 +66,12 @@ export const Movie = ({movie, onRemoveFromFavorites}) => {
           </span>
         </div>
       </div>
-    </>
+      <button
+      className={css.favoriteBtn}
+      type="button" onClick={toggleFavorite} >
+      {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+      {isFavorite ? <HeartFilled/> : <Heart/>}
+      </button>
+    </div>
   );
 };
