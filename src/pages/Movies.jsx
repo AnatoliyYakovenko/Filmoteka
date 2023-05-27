@@ -29,13 +29,6 @@ export default function Movies () {
     });
   }, [movieToSearch]);
 
-  // useEffect(()=>{
-  //   if (!movieToSearch) return;
-  //   getMovieByQuery(movieToSearch).then(({ results }) => {
-  //   setSearchMovies(results);
-  //     });
-  // }, [movieToSearch]);
-
   const handleSubmit = event => {
     event.preventDefault();
     setIsFormSubmitted(true);

@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import { ReactComponent as Heart } from 'image/heart-icon.svg';
 import css from './Movie.module.css';
 
 export const Movie = ({movie}) => {
@@ -16,10 +17,12 @@ export const Movie = ({movie}) => {
           alt={movie.original_title}
           loading="lazy"
         />
+
       </div>
       <div className={css.films__description}>
         <p className={css.films__name}>{movie.title || movie.name}</p>
         <div className={css.films__container}>
+        <button className={css.favoriteBtn} type="button" >Add to favorite<Heart/></button>
           <p className={css.films__info}>
             {movie.release_date || movie.first_air_date}
           </p>

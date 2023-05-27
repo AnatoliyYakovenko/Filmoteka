@@ -18,6 +18,11 @@ export const SharedLayout = () => {
             } to="/movies" >
           Movies
         </NavLink>
+        <NavLink  className={({ isActive }) =>
+              cn(css.NavLink, { [css.active]: isActive })
+            } to="/favorites" >
+         Favorites
+        </NavLink>
       </nav>
       <Suspense fallback={<Loader/>}>
         <Outlet />
