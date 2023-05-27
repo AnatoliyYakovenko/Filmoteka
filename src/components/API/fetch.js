@@ -13,7 +13,7 @@ export const getAllMovies = async onFetch => {
     console.log(error.message);
   }
 };
-getAllMovies();
+
 export const getAllGenres = async onFetch => {
   try {
     const { data } = await axios.get('/genre/movie/list');

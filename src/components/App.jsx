@@ -4,17 +4,9 @@ import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Suspense } from "react";
 import Loader from "components/Loader/Loader";
 
-// import { Home } from 'pages/Home';
-// import { Movies } from 'pages/Movies';
-// import { MovieDetails } from 'pages/MovieDetails';
-// import { ErrorPage } from 'pages/ErrorPage';
-// import { Cast } from './Cast/Cast';
-// import { Comments } from './Comments/Comments';
-
-
-
 const Home = lazy(() => import('pages/Home'));
 const Movies = lazy(() => import('pages/Movies'));
+const Favorite = lazy(() => import('pages/Favorite'));
 const MovieDetails = lazy(() => import('pages/MovieDetails'));
 const ErrorPage = lazy(() => import('pages/ErrorPage'));
 const Cast = lazy(() => import('./Cast/Cast'));
@@ -28,6 +20,7 @@ export const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path="movies" element={<Movies />} />
+          <Route path="favorite" element={<Favorite />} />
           <Route path="movies/:id" element={<MovieDetails />}>
             <Route path="reviews" element={<Comments />} />
             <Route path="cast" element={<Cast />} />

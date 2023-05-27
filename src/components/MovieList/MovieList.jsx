@@ -1,13 +1,15 @@
 import { Movie } from 'components/Movie/Movie';
 import css from './MovieList.module.css';
+import { nanoid } from 'nanoid';
 
-export const MovieList = ({ movies }) => {
+export const MovieList = ({movies, onRemoveFromFavorites}) => {
+  const uniqueMovies = movies.filter((movie, index) => {
+    return movies.findIndex((m) => m.id === movie.id) === index;
+  });
   return (
     <ul className={css.films}>
-      {movies.map(movie => {
-        return (
-          <Movie key={movie.id} movie={movie}/>
-        );
+     {uniqueMovies?.map((movie) => {
+        return <Movie key={nanoid()} movie={movie} onRemoveFromFavorites={onRemoveFromFavorites}/>;
       })}
     </ul>
   );

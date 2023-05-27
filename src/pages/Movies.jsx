@@ -19,7 +19,6 @@ export default function Movies () {
   useEffect(() => {
     getAllMovies(setAllMovies);
   }, []);
-  console.log(allMovies);
 
   useEffect(() => {
     if (!movieToSearch) return;

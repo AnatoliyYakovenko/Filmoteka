@@ -20,8 +20,8 @@ export const SharedLayout = () => {
         </NavLink>
         <NavLink  className={({ isActive }) =>
               cn(css.NavLink, { [css.active]: isActive })
-            } to="/favorites" >
-         Favorites
+            } to="/favorite" >
+         Favorite
         </NavLink>
       </nav>
       <Suspense fallback={<Loader/>}>
