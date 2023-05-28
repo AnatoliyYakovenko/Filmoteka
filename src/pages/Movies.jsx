@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 import { getMovieByQuery, getAllMovies, getAllGenres } from 'components/API/fetch';
-import {  } from 'components/API/fetch';
 import { MovieList } from 'components/MovieList/MovieList';
 import GenresList  from 'components/GenresList/GenresList';
 import css from './Movies.module.css';
@@ -43,16 +44,7 @@ export default function Movies () {
     setSelectedGenres(selectedGenres);
   };
 
-  // const filterMoviesByGenre = movies => {
-  //   if (selectedGenres.length === 0) {
-  //     return movies;
-  //   } else{
-  //     return movies.filter(movie => {
-  //       return movie.genre_ids?.some(genreId => getGenreId(selectedGenres).includes(genreId));
-  //     });
-  //   }
-  // };
-  const filterMoviesByGenre = movies => {
+  const filterMoviesByGenreAndYear = movies => {
     let filteredMovies = movies;
 
     if (selectedGenres.length > 0) {
@@ -85,13 +77,13 @@ export default function Movies () {
     const { value } = event.target;
     const formattedValue = value.replace(/\D/g, '').slice(0, 4);
     if(!formattedValue){
-      console.log("wrong")
+      toast.error(`Enter year in right format e.g. 2022!`);
     }
     setReleaseYear(formattedValue);
   };
 
 
-  const filteredMovies = filterMoviesByGenre(searchMovies || allMovies);
+  const filteredMovies = filterMoviesByGenreAndYear(searchMovies || allMovies);
 
   return (
     <>

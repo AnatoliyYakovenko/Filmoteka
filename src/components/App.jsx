@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Suspense } from "react";
 import Loader from "components/Loader/Loader";
+import { ToastContainer } from 'react-toastify';
 
 const Home = lazy(() => import('pages/Home'));
 const Movies = lazy(() => import('pages/Movies'));
@@ -28,6 +29,11 @@ export const App = () => {
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
+      <ToastContainer
+          position="top-right"
+          reverseOrder={false}
+          autoClose={2000}
+        />
       </Suspense>
     </>
   );
