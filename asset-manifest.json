@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/Filmoteka/static/css/main.bcb8a1b9.css",
-    "main.js": "/Filmoteka/static/js/main.2f4fcdd7.js",
+    "main.js": "/Filmoteka/static/js/main.584217e5.js",
     "static/css/304.2d817f79.chunk.css": "/Filmoteka/static/css/304.2d817f79.chunk.css",
     "static/js/304.48f1c786.chunk.js": "/Filmoteka/static/js/304.48f1c786.chunk.js",
     "static/css/523.f602564e.chunk.css": "/Filmoteka/static/css/523.f602564e.chunk.css",
-    "static/js/523.9aa5b9b1.chunk.js": "/Filmoteka/static/js/523.9aa5b9b1.chunk.js",
+    "static/js/523.1395c7b4.chunk.js": "/Filmoteka/static/js/523.1395c7b4.chunk.js",
     "static/css/128.fae49710.chunk.css": "/Filmoteka/static/css/128.fae49710.chunk.css",
     "static/js/128.07f7b1ce.chunk.js": "/Filmoteka/static/js/128.07f7b1ce.chunk.js",
     "static/css/616.081eb5e3.chunk.css": "/Filmoteka/static/css/616.081eb5e3.chunk.css",
@@ -21,11 +21,11 @@
     "static/media/heart-icon.svg": "/Filmoteka/static/media/heart-icon.16f6969c76b55130f27931c706152f47.svg",
     "static/media/heart-filled-icon.svg": "/Filmoteka/static/media/heart-filled-icon.36e942a69a6a42a9eb1d20d32a78fe9a.svg",
     "main.bcb8a1b9.css.map": "/Filmoteka/static/css/main.bcb8a1b9.css.map",
-    "main.2f4fcdd7.js.map": "/Filmoteka/static/js/main.2f4fcdd7.js.map",
+    "main.584217e5.js.map": "/Filmoteka/static/js/main.584217e5.js.map",
     "304.2d817f79.chunk.css.map": "/Filmoteka/static/css/304.2d817f79.chunk.css.map",
     "304.48f1c786.chunk.js.map": "/Filmoteka/static/js/304.48f1c786.chunk.js.map",
     "523.f602564e.chunk.css.map": "/Filmoteka/static/css/523.f602564e.chunk.css.map",
-    "523.9aa5b9b1.chunk.js.map": "/Filmoteka/static/js/523.9aa5b9b1.chunk.js.map",
+    "523.1395c7b4.chunk.js.map": "/Filmoteka/static/js/523.1395c7b4.chunk.js.map",
     "128.fae49710.chunk.css.map": "/Filmoteka/static/css/128.fae49710.chunk.css.map",
     "128.07f7b1ce.chunk.js.map": "/Filmoteka/static/js/128.07f7b1ce.chunk.js.map",
     "616.081eb5e3.chunk.css.map": "/Filmoteka/static/css/616.081eb5e3.chunk.css.map",
@@ -40,6 +40,6 @@
   },
   "entrypoints": [
     "static/css/main.bcb8a1b9.css",
-    "static/js/main.2f4fcdd7.js"
+    "static/js/main.584217e5.js"
   ]
 }
