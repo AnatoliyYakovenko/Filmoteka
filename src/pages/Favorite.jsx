@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import {MovieList} from 'components/MovieList/MovieList';
 
+import css from './Favorite.module.css';
+
 const Favorite = () => {
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
@@ -18,8 +20,11 @@ const Favorite = () => {
 
   return (
     <div>
-      <h1>Favorite Movies</h1>
-      <MovieList movies={favoriteMovies} onRemoveFromFavorites={handleRemoveFromFavorites} />
+      <h1 className={css.title}>Favorite Movies</h1>
+      <MovieList
+      movies={favoriteMovies}
+      onRemoveFromFavorites={handleRemoveFromFavorites}
+      />
     </div>
   );
 };

@@ -26,13 +26,24 @@ export const Movie = ({movie, onRemoveFromFavorites}) => {
     setIsFavorite(true);
   };
 
+  // const removeFromFavorites = () => {
+  //   let favoriteMovies = [];
+  //   const storedMovies = localStorage.getItem('favoriteMovies');
+  //   if (storedMovies) {
+  //     favoriteMovies = JSON.parse(storedMovies);
+  //     favoriteMovies = favoriteMovies.filter(favoriteMovie => favoriteMovie.id !== movie.id);
+  //     localStorage.setItem('favoriteMovies', JSON.stringify(favoriteMovies));
+  //   }
+  //   onRemoveFromFavorites(movie.id);
+  //   setIsFavorite(false);
+
+  // };
   const removeFromFavorites = () => {
-    const storedMovies = localStorage.getItem('favoriteMovies');
+    const storedMovies = JSON.parse(localStorage.getItem('favoriteMovies'));
     let favoriteMovies = [];
     if (storedMovies) {
-      favoriteMovies = JSON.parse(storedMovies);
-        favoriteMovies = favoriteMovies.filter(id => id !== storedMovies.id);
-      localStorage.setItem('favoriteMovies', JSON.stringify(favoriteMovies.filter(id => id !== storedMovies.id)));
+      favoriteMovies = storedMovies.filter((storedMovie) => storedMovie.id !== movie.id);
+      localStorage.setItem('favoriteMovies', JSON.stringify(favoriteMovies));
     }
     onRemoveFromFavorites(movie.id);
     setIsFavorite(false);

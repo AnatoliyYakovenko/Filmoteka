@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { getMovieByQuery } from 'components/API/fetch';
-import { getAllMovies } from 'components/API/fetch';
+import { getMovieByQuery, getAllMovies, getAllGenres } from 'components/API/fetch';
+import {  } from 'components/API/fetch';
 import { MovieList } from 'components/MovieList/MovieList';
 import GenresList  from 'components/GenresList/GenresList';
 import css from './Movies.module.css';
@@ -12,12 +12,15 @@ export default function Movies () {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [selectedGenres, setSelectedGenres] = useState([]);
+  const [genres, setGenres] = useState([]);
 
 
   const movieToSearch = searchParams.get('query') ?? '';
 
   useEffect(() => {
     getAllMovies(setAllMovies);
+    getAllGenres(setGenres);
   }, []);
 
   useEffect(() => {
@@ -33,6 +36,37 @@ export default function Movies () {
     setIsFormSubmitted(true);
     setSearchParams({ query: searchQuery });
   };
+  const handleGenreSelect = (selectedGenres) => {
+    setSelectedGenres(selectedGenres);
+  };
+
+  const filterMoviesByGenre = movies => {
+    if (selectedGenres.length === 0) {
+      return movies;
+    } else {
+      return movies.filter(movie => {
+        return movie.genre_ids?.some(genreId => getGenreId(genres, selectedGenres).includes(genreId));
+      });
+    }
+  };
+
+  const getGenreId = (genres, selectedGenres) => {
+    const genreIds = [];
+    selectedGenres.forEach(selectedGenre => {
+      const genre = genres.find(genre => genre.name === selectedGenre);
+      if (genre) {
+        genreIds.push(genre.id);
+      }
+    });
+    return genreIds;
+  }
+
+
+console.log(allMovies);
+
+
+
+  const filteredMovies = filterMoviesByGenre(searchMovies || allMovies);
 
   return (
     <>
@@ -52,11 +86,20 @@ export default function Movies () {
             onChange={e => setSearchQuery(e.target.value)}
           />
         </form>
-        <GenresList/>
+        <GenresList
+        genres={genres}
+        selectedGenres={selectedGenres}
+        onGenreSelect={handleGenreSelect}
+        />
       </header>
       <main>
-       {searchMovies?.length>0 ? (<MovieList movies={searchMovies} />): allMovies?.length>0 && (<MovieList movies={allMovies}/>)}
-       { isFormSubmitted && searchMovies?.length<=0 && (<p className={css.noFound}>Nothing found... Please try to search another movie!</p>)}
+      {filteredMovies?.length > 0 ? (
+          <MovieList movies={filteredMovies} />
+        ) : (
+          isFormSubmitted && (
+            <p className={css.noFound}>Nothing found... Please try to search another movie!</p>
+          )
+        )}
       </main>
     </>
   );

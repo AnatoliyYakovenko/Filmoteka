@@ -13,8 +13,10 @@ export default function Home(){
       setMovies(results);
     });
   }, []);
+
   const handleRemoveFromFavorites = (movieId) => {
-    const updatedMovies = movies.filter((movie) => movie.id !== movieId);
+    let updatedMovies = movies.filter((movie) => movie.id !== movieId);
+    // setMovies(updatedMovies);
     localStorage.setItem('favoriteMovies', JSON.stringify(updatedMovies));
   };
   return (
