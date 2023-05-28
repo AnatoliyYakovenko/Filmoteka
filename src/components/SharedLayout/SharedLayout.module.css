@@ -1,5 +1,10 @@
 .nav {
-  background-color: dimgray;
+  background-color: rgb(141, 139, 139);
+}
+@media screen and (max-width: 768px) {
+  .nav {
+    display: block;
+  }
 }
 .NavLink {
   display: inline-flex;

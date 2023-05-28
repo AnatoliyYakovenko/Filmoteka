@@ -14,7 +14,7 @@ export default function Movies () {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [genres, setGenres] = useState([]);
-
+  const [releaseYear, setReleaseYear] = useState('');
 
   const movieToSearch = searchParams.get('query') ?? '';
 
@@ -30,27 +30,48 @@ export default function Movies () {
     setSearchMovies(results);
     });
   }, [movieToSearch]);
+  useEffect(() => {
+    setIsFormSubmitted(false);
+  }, []);
 
   const handleSubmit = event => {
     event.preventDefault();
     setIsFormSubmitted(true);
     setSearchParams({ query: searchQuery });
-  };
+  }
   const handleGenreSelect = (selectedGenres) => {
     setSelectedGenres(selectedGenres);
   };
 
+  // const filterMoviesByGenre = movies => {
+  //   if (selectedGenres.length === 0) {
+  //     return movies;
+  //   } else{
+  //     return movies.filter(movie => {
+  //       return movie.genre_ids?.some(genreId => getGenreId(selectedGenres).includes(genreId));
+  //     });
+  //   }
+  // };
   const filterMoviesByGenre = movies => {
-    if (selectedGenres.length === 0) {
-      return movies;
-    } else {
-      return movies.filter(movie => {
-        return movie.genre_ids?.some(genreId => getGenreId(genres, selectedGenres).includes(genreId));
-      });
+    let filteredMovies = movies;
+
+    if (selectedGenres.length > 0) {
+      const genreIds = getGenreId(selectedGenres);
+      filteredMovies = filteredMovies.filter(movie =>
+        movie.genre_ids?.some(genreId => genreIds.includes(genreId))
+      );
     }
+
+    if (releaseYear) {
+      filteredMovies = filteredMovies.filter(
+        movie => movie.release_date?.startsWith(releaseYear)
+      );
+    }
+
+    return filteredMovies;
   };
 
-  const getGenreId = (genres, selectedGenres) => {
+  const getGenreId = (selectedGenres) => {
     const genreIds = [];
     selectedGenres.forEach(selectedGenre => {
       const genre = genres.find(genre => genre.name === selectedGenre);
@@ -60,10 +81,14 @@ export default function Movies () {
     });
     return genreIds;
   }
-
-
-console.log(allMovies);
-
+  const handleReleaseYearChange = (event) => {
+    const { value } = event.target;
+    const formattedValue = value.replace(/\D/g, '').slice(0, 4);
+    if(!formattedValue){
+      console.log("wrong")
+    }
+    setReleaseYear(formattedValue);
+  };
 
 
   const filteredMovies = filterMoviesByGenre(searchMovies || allMovies);
@@ -73,9 +98,7 @@ console.log(allMovies);
       <header className={css.Searchbar}>
         <form className={css.SearchForm} onSubmit={handleSubmit}>
           <button type="submit" className={css.SearchFormButton}>
-            <span className={css.SearchFormButtonLabel}>Search</span>
           </button>
-
           <input
             className={css.SearchFormInput}
             type="text"
@@ -86,11 +109,25 @@ console.log(allMovies);
             onChange={e => setSearchQuery(e.target.value)}
           />
         </form>
+        <form className={css.SearchByYearForm} onSubmit={handleSubmit}>
+          <button type="submit" className={css.SearchByYearFormButton}>
+          </button>
+          <input
+            className={css.SearchFormInputByYear}
+            type="text"
+            autoComplete="off"
+            name="releaseYear"
+            value={releaseYear}
+            placeholder="Release Year"
+            onChange={handleReleaseYearChange}
+          />
+        </form>
         <GenresList
         genres={genres}
         selectedGenres={selectedGenres}
         onGenreSelect={handleGenreSelect}
         />
+
       </header>
       <main>
       {filteredMovies?.length > 0 ? (

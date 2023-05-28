@@ -33,7 +33,7 @@ export default function GenresList({ genres, selectedGenres, onGenreSelect }) {
     onGenreSelect(value);
   };
   return (
-    <div>
+    <>
       <FormControl sx={{ m: 1, width: 300, backgroundColor: 'white', borderRadius: '3px' }}>
         <InputLabel
          sx={{
@@ -62,7 +62,7 @@ export default function GenresList({ genres, selectedGenres, onGenreSelect }) {
             ))}
         </Select>
       </FormControl>
-    </div>
+    </>
   );
 }
 
