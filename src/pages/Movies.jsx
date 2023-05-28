@@ -11,7 +11,7 @@ export default function Movies () {
   const [allMovies, setAllMovies] = useState(null);
   const [searchMovies, setSearchMovies] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams({ query: '' });
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -23,6 +23,7 @@ export default function Movies () {
     getAllMovies(setAllMovies);
     getAllGenres(setGenres);
   }, []);
+
 
   useEffect(() => {
     if (!movieToSearch) return;
@@ -81,8 +82,7 @@ export default function Movies () {
     }
     setReleaseYear(formattedValue);
   };
-
-
+  
   const filteredMovies = filterMoviesByGenreAndYear(searchMovies || allMovies);
 
   return (
