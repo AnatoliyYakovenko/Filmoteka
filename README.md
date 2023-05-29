@@ -1,3 +1,15 @@
+# \*\* About the Application: \*\*
+
+This is a movie database application that provides the following features:
+
+1. Search for movies by title.
+2. Search for movies by genre.
+3. Search for movies by release year.
+4. View trending movies of today.
+5. View detailed information about a selected movie (poster, title, main cast,
+   brief description, reviews, rating).
+6. Add movies to favorites.
+
 Про додаток.
 
 Це застосунок бази кінофільмів, в якому є такі можливості:
