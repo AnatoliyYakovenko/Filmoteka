@@ -4,6 +4,7 @@ import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Suspense } from "react";
 import Loader from "components/Loader/Loader";
 import { ToastContainer } from 'react-toastify';
+import { MoviesProvider } from 'context/MoviesContext';
 
 const Home = lazy(() => import('pages/Home'));
 const Movies = lazy(() => import('pages/Movies'));
@@ -17,6 +18,7 @@ export const App = () => {
   return (
     <>
      <Suspense fallback={<Loader/>}>
+     <MoviesProvider>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
@@ -34,6 +36,7 @@ export const App = () => {
           reverseOrder={false}
           autoClose={2000}
         />
+        </MoviesProvider>
       </Suspense>
     </>
   );

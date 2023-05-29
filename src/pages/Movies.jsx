@@ -1,21 +1,44 @@
+import { useContext } from "react";
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import { MoviesContext } from "context/MoviesContext";
 import { getMovieByQuery, getAllMovies, getAllGenres } from 'components/API/fetch';
 import { MovieList } from 'components/MovieList/MovieList';
 import GenresList  from 'components/GenresList/GenresList';
 import css from './Movies.module.css';
 
 export default function Movies () {
-  const [allMovies, setAllMovies] = useState(null);
-  const [searchMovies, setSearchMovies] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
+const{
+  allMovies,
+  searchMovies,
+  searchQuery,
+  isFormSubmitted,
+  selectedGenres,
+  genres,
+  releaseYear,
+  isFavorite,
+  setAllMovies,
+  setSearchMovies,
+  setSearchQuery,
+  setIsFormSubmitted,
+  setSelectedGenres,
+  setGenres,
+  setReleaseYear,
+  setIsFavorite,
+}=useContext(MoviesContext);
+
+
+
+  // const [allMovies, setAllMovies] = useState(null);
+  // const [searchMovies, setSearchMovies] = useState(null);
+  // const [searchQuery, setSearchQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams({ query: '' });
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-  const [selectedGenres, setSelectedGenres] = useState([]);
-  const [genres, setGenres] = useState([]);
-  const [releaseYear, setReleaseYear] = useState('');
+  // const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  // const [selectedGenres, setSelectedGenres] = useState([]);
+  // const [genres, setGenres] = useState([]);
+  // const [releaseYear, setReleaseYear] = useState('');
 
   const movieToSearch = searchParams.get('query') ?? '';
 
@@ -82,6 +105,10 @@ export default function Movies () {
     }
     setReleaseYear(formattedValue);
   };
+
+  const handleIsFavorite = () => {
+    setIsFavorite(false);
+  };
   
   const filteredMovies = filterMoviesByGenreAndYear(searchMovies || allMovies);
 
@@ -123,7 +150,7 @@ export default function Movies () {
       </header>
       <main>
       {filteredMovies?.length > 0 ? (
-          <MovieList movies={filteredMovies} />
+          <MovieList movies={filteredMovies} onRemoveFromFavorites={handleIsFavorite} />
         ) : (
           isFormSubmitted && (
             <p className={css.noFound}>Nothing found... Please try to search another movie!</p>
