@@ -20,13 +20,13 @@
 .authorName {
   font-weight: 800;
 }
-.ContentTitle {
+.contentTitle {
   font-size: 24px;
   font-weight: 700;
   margin-top: 15px;
   margin-bottom: 15px;
 }
-.Content {
+.content {
   color: rgb(44, 43, 43);
   font-style: italic;
 }

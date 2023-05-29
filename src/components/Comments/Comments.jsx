@@ -1,11 +1,14 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+
 import { getReviews } from 'components/API/fetch';
+
 import css from './Comments.module.css';
 
 export default function Comments(){
   const [reviews, setReviews] = useState(null);
   const { id } = useParams();
+
   useEffect(() => {
     if (!id) return;
     getReviews(id).then(({ results }) => {
@@ -29,9 +32,9 @@ export default function Comments(){
                   <span className={css.authorName}>{review.author}</span>
                 </p>
 
-                <div className={css.ContentContainer}>
-                  <p className={css.ContentTitle}>Content:</p>
-                  <span className={css.Content}>{review.content}</span>
+                <div className={css.contentContainer}>
+                  <p className={css.contentTitle}>Content:</p>
+                  <span className={css.content}>{review.content}</span>
                 </div>
               </li>
             );

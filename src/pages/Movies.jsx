@@ -39,7 +39,7 @@ export default function Movies() {
   useEffect(() => {
     getAllMovies(setAllMovies);
     getAllGenres(setGenres);
-  }, []);
+  }, [setAllMovies, setGenres]);
 
   useEffect(() => {
     if (!movieToSearch) return;
@@ -47,7 +47,7 @@ export default function Movies() {
     getMovieByQuery(movieToSearch).then(({ results }) => {
       setSearchMovies(results);
     });
-  }, [movieToSearch]);
+  }, [movieToSearch, setSearchQuery, setSearchMovies]);
 
   const handleSubmit = event => {
     event.preventDefault();
