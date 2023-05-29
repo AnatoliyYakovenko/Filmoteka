@@ -36,7 +36,7 @@ export default function GenresList({ genres, selectedGenres, onGenreSelect }) {
       >
         <InputLabel
           sx={{
-            color: genreName.length > 0 ? 'white' : '#808080',
+            color: genreName.length > 0 ? '#808080' : '#808080',
             marginTop: genreName.length > 0 ? '-8px' : '-3px',
           }}
           id="demo-multiple-checkbox-label"

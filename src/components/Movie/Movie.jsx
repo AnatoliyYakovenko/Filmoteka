@@ -64,7 +64,6 @@ export const Movie = ({ movie, onRemoveFromFavorites }) => {
             loading="lazy"
           />
         </div>
-      </Link>
       <div className={css.description}>
         <p className={css.name}>{movie.title || movie.name}</p>
         <div className={css.container}>
@@ -74,6 +73,7 @@ export const Movie = ({ movie, onRemoveFromFavorites }) => {
           <span className={css.rating}>{movie.vote_average?.toFixed(2)}</span>
         </div>
       </div>
+      </Link>
       <button
         className={css.favoriteBtn}
         type="button"
