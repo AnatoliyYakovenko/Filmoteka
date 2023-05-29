@@ -43,15 +43,19 @@ export default function Movies() {
   const movieToSearch = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    getAllMovies(currentPage, setAllMovies, setTotalPages, movieToSearch);
     getAllGenres(setGenres);
-  }, [currentPage, setAllMovies, setGenres, setTotalPages, movieToSearch]);
+  }, []);
+
+  useEffect(() => {
+    getAllMovies(currentPage, setAllMovies, setTotalPages, releaseYear);;
+    getAllGenres(setGenres);
+  }, [currentPage, setAllMovies, setGenres, setTotalPages, releaseYear]);
 
   useEffect(() => {
     if (!movieToSearch) return;
     setSearchQuery(movieToSearch);
-    getMovieByQuery(currentPage, movieToSearch, setSearchMovies, setTotalPages);
-  }, [currentPage, movieToSearch, setSearchQuery, setSearchMovies, setTotalPages]);
+    getMovieByQuery(currentPage, movieToSearch, setSearchMovies, setTotalPages, releaseYear);
+  }, [currentPage, movieToSearch, setSearchQuery, setSearchMovies, setTotalPages, releaseYear]);
 
 
 
@@ -100,7 +104,8 @@ export default function Movies() {
     if (!formattedValue) {
       toast.error(`Enter year in right format e.g. 2022!`);
     }
-    setReleaseYear(formattedValue);
+    getAllMovies(1, setAllMovies, setTotalPages, formattedValue);
+setReleaseYear(formattedValue);
   };
 
   const handleIsFavorite = () => {

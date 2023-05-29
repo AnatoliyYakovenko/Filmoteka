@@ -14,13 +14,14 @@ export const getAllGenres = async onFetch => {
     toast.error(error.message);
   }
 };
-export const getAllMovies = async (page, onFetch, totalPagesCallback) => {
+export const getAllMovies = async (page, onFetch, totalPagesCallback, releaseYear) => {
   try {
-    const { data } = await axios.get('/discover/movie', {
-      params: {
-        page: page,
-      },
-    });
+    let releaseYearQuery = '';
+    if (releaseYear) {
+      releaseYearQuery = `&primary_release_year=${releaseYear}`;
+    }
+
+    const { data } = await axios.get(`/discover/movie?page=${page}${releaseYearQuery}`);
     onFetch(data.results);
     totalPagesCallback(data.total_pages);
   } catch (error) {
@@ -45,10 +46,15 @@ export const getMovieByQuery = async (
   page,
   query,
   onFetch,
-  totalPagesCallback
+  totalPagesCallback,
+  releaseYear
 ) => {
   try {
-    const { data } = await axios.get('/search/movie', {
+    let releaseYearQuery = '';
+    if (releaseYear) {
+      releaseYearQuery = `&primary_release_year=${releaseYear}`;
+    }
+    const { data } = await axios.get(`/search/movie?page=${page}${releaseYearQuery}`, {
       params: {
         query,
         page: page,
