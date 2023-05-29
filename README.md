@@ -1,4 +1,4 @@
-# \*\* About the Application: \*\*
+# About the Application:
 
 This is a movie database application that provides the following features:
 
@@ -10,7 +10,7 @@ This is a movie database application that provides the following features:
    brief description, reviews, rating).
 6. Add movies to favorites.
 
-Про додаток.
+# Про додаток.
 
 Це застосунок бази кінофільмів, в якому є такі можливості:
 
