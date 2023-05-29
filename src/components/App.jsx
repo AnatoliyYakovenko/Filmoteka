@@ -1,8 +1,8 @@
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout/SharedLayout';
-import { Suspense } from "react";
-import Loader from "components/Loader/Loader";
+import { Suspense } from 'react';
+import Loader from 'components/Loader/Loader';
 import { ToastContainer } from 'react-toastify';
 import { MoviesProvider } from 'context/MoviesContext';
 
@@ -17,25 +17,25 @@ const Comments = lazy(() => import('./Comments/Comments'));
 export const App = () => {
   return (
     <>
-     <Suspense fallback={<Loader/>}>
-     <MoviesProvider>
-      <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
-          <Route path="movies" element={<Movies />} />
-          <Route path="favorite" element={<Favorite />} />
-          <Route path="movies/:id" element={<MovieDetails />}>
-            <Route path="reviews" element={<Comments />} />
-            <Route path="cast" element={<Cast />} />
-          </Route>
-          <Route path="*" element={<ErrorPage />} />
-        </Route>
-      </Routes>
-      <ToastContainer
-          position="top-right"
-          reverseOrder={false}
-          autoClose={2000}
-        />
+      <Suspense fallback={<Loader />}>
+        <MoviesProvider>
+          <Routes>
+            <Route path="/" element={<SharedLayout />}>
+              <Route index element={<Home />} />
+              <Route path="movies" element={<Movies />} />
+              <Route path="favorite" element={<Favorite />} />
+              <Route path="movies/:id" element={<MovieDetails />}>
+                <Route path="reviews" element={<Comments />} />
+                <Route path="cast" element={<Cast />} />
+              </Route>
+              <Route path="*" element={<ErrorPage />} />
+            </Route>
+          </Routes>
+          <ToastContainer
+            position="top-right"
+            reverseOrder={false}
+            autoClose={2000}
+          />
         </MoviesProvider>
       </Suspense>
     </>

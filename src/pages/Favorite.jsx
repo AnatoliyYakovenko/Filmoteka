@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {MovieList} from 'components/MovieList/MovieList';
+import { MovieList } from 'components/MovieList/MovieList';
 
 import css from './Favorite.module.css';
 
@@ -12,8 +12,8 @@ const Favorite = () => {
       setFavoriteMovies(JSON.parse(storedMovies));
     }
   }, []);
-  const handleRemoveFromFavorites = (movieId) => {
-    const updatedMovies = favoriteMovies.filter((movie) => movie.id !== movieId);
+  const handleRemoveFromFavorites = movieId => {
+    const updatedMovies = favoriteMovies.filter(movie => movie.id !== movieId);
     setFavoriteMovies(updatedMovies);
     localStorage.setItem('favoriteMovies', JSON.stringify(updatedMovies));
   };
@@ -22,13 +22,11 @@ const Favorite = () => {
     <div>
       <h1 className={css.title}>Favorite Movies</h1>
       <MovieList
-      movies={favoriteMovies}
-      onRemoveFromFavorites={handleRemoveFromFavorites}
+        movies={favoriteMovies}
+        onRemoveFromFavorites={handleRemoveFromFavorites}
       />
     </div>
   );
 };
 
 export default Favorite;
-
-

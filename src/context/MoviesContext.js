@@ -12,15 +12,6 @@ export const MoviesProvider = ({ children }) => {
   const [releaseYear, setReleaseYear] = useState('');
   const [isFavorite, setIsFavorite] = useState(false);
 
-  // const [score, setScore] = useState(0);
-  // const [currentQuestion, setCurrentQuestion] = useState(0);
-  // const [selectedAnswers, setSelectedAnswers] = useState([]);
-
-  // const resetMovies = () => {
-  //   setReleaseYear(0);
-  //   setCurrentQuestion(0);
-  //   setSelectedAnswers([]);
-  // };
   const contextValue = {
     allMovies,
     searchMovies,

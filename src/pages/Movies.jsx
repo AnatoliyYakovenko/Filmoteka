@@ -11,6 +11,7 @@ import {
 } from 'components/API/fetch';
 import { MovieList } from 'components/MovieList/MovieList';
 import GenresList from 'components/GenresList/GenresList';
+
 import css from './Movies.module.css';
 
 export default function Movies() {
