@@ -1,30 +1,36 @@
+import { useState, useEffect } from 'react';
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
+import { useContext } from "react";
+
+import { MoviesContext } from "context/MoviesContext";
 import { MovieList } from 'components/MovieList/MovieList';
-import { useState, useEffect } from 'react';
 import { getTrendingMovie } from 'components/API/fetch';
-import css from './Home.module.css';
 import Loader from "components/Loader/Loader";
 
+import css from './Home.module.css';
+
 export default function Home(){
+  const{setIsFavorite}=useContext(MoviesContext);
+
   const [movies, setMovies] = useState([]);
+
   useEffect(() => {
     getTrendingMovie().then(({ results }) => {
       setMovies(results);
     });
   }, []);
 
-  const handleRemoveFromFavorites = (movieId) => {
-    let updatedMovies = movies.filter((movie) => movie.id !== movieId);
-    // setMovies(updatedMovies);
-    localStorage.setItem('favoriteMovies', JSON.stringify(updatedMovies));
+  const removeFromFavorites = () => {
+    setIsFavorite(false);
   };
+
   return (
     <main>
       <section className={css.gallery}>
         <div className={css.container}>
           <h1 className={css.title}>Trending today</h1>
-          <MovieList movies={movies} onRemoveFromFavorites={handleRemoveFromFavorites} />
+          <MovieList movies={movies} onRemoveFromFavorites={removeFromFavorites} />
         </div>
       </section>
       <Suspense fallback={<Loader/>}>
