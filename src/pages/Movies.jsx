@@ -48,8 +48,8 @@ export default function Movies() {
 
   useEffect(() => {
     getAllMovies(currentPage, setAllMovies, setTotalPages, releaseYear);;
-    getAllGenres(setGenres);
-  }, [currentPage, setAllMovies, setGenres, setTotalPages, releaseYear]);
+
+  }, [currentPage, setAllMovies, setTotalPages, releaseYear]);
 
   useEffect(() => {
     if (!movieToSearch) return;
