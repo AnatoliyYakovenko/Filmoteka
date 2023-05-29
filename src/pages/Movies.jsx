@@ -44,7 +44,7 @@ export default function Movies() {
 
   useEffect(() => {
     getAllGenres(setGenres);
-  }, []);
+  }, [setGenres]);
 
   useEffect(() => {
     getAllMovies(currentPage, setAllMovies, setTotalPages, releaseYear);;
