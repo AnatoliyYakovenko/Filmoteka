@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import { getAllGenres } from 'components/API/fetch';
 
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
@@ -8,7 +7,6 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
-
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -24,8 +22,7 @@ const MenuProps = {
 export default function GenresList({ genres, selectedGenres, onGenreSelect }) {
   const [genreName, setGenreName] = useState([]);
 
-
-  const handleChange = (event) => {
+  const handleChange = event => {
     const {
       target: { value },
     } = event;
@@ -34,14 +31,16 @@ export default function GenresList({ genres, selectedGenres, onGenreSelect }) {
   };
   return (
     <>
-      <FormControl sx={{ m: 1, width: 300, backgroundColor: 'white', borderRadius: '3px' }}>
-        <InputLabel
-         sx={{
-          color: genreName.length > 0 ? 'white' : '#808080',
-          marginTop: genreName.length > 0 ? '-8px' : '-3px',
-        }}
-        id="demo-multiple-checkbox-label"
+      <FormControl
+        sx={{ m: 1, width: 300, backgroundColor: 'white', borderRadius: '3px' }}
       >
+        <InputLabel
+          sx={{
+            color: genreName.length > 0 ? 'white' : '#808080',
+            marginTop: genreName.length > 0 ? '-8px' : '-3px',
+          }}
+          id="demo-multiple-checkbox-label"
+        >
           Genres
         </InputLabel>
         <Select
@@ -51,27 +50,17 @@ export default function GenresList({ genres, selectedGenres, onGenreSelect }) {
           value={genreName}
           onChange={handleChange}
           input={<OutlinedInput sx={{ height: 48 }} label="Genres" />}
-          renderValue={(selected) => selected.join(', ')}
+          renderValue={selected => selected.join(', ')}
           MenuProps={MenuProps}
         >
-          {genres?.map((genre) => (
-              <MenuItem key={genre.id} value={genre.name}>
-                <Checkbox checked={selectedGenres.indexOf(genre.name) > -1} />
-                <ListItemText primary={genre.name} />
-              </MenuItem>
-            ))}
+          {genres?.map(genre => (
+            <MenuItem key={genre.id} value={genre.name}>
+              <Checkbox checked={selectedGenres.indexOf(genre.name) > -1} />
+              <ListItemText primary={genre.name} />
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </>
   );
 }
-
-
-
-
-
-
-
-
-
-
