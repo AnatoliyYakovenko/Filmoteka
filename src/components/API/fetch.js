@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 axios.defaults.params = {
@@ -10,7 +11,7 @@ export const getAllMovies = async onFetch => {
     const { data } = await axios.get('/discover/movie');
     onFetch(data.results);
   } catch (error) {
-    console.log(error.message);
+    toast.error(error.message);
   }
 };
 
@@ -19,39 +20,59 @@ export const getAllGenres = async onFetch => {
     const { data } = await axios.get('/genre/movie/list');
     onFetch(data.genres);
   } catch (error) {
-    console.log(error.message);
+    toast.error(error.message);
   }
 };
 
 export const getTrendingMovie = async () => {
-  const { data } = await axios.get('/trending/movie/day', {
-    params: {
-      page: 1,
-    },
-  });
-  return data;
+  try {
+    const { data } = await axios.get('/trending/movie/day', {
+      params: {
+        page: 1,
+      },
+    });
+    return data;
+  } catch (error) {
+    toast.error(error.message);
+  }
 };
 
 export const getMovieByQuery = async query => {
-  const { data } = await axios.get('/search/movie', {
-    params: {
-      query,
-    },
-  });
-  return data;
+  try {
+    const { data } = await axios.get('/search/movie', {
+      params: {
+        query,
+      },
+    });
+    return data;
+  } catch (error) {
+    toast.error(error.message);
+  }
 };
 
 export const getMovieInfo = async movie_id => {
-  const { data } = await axios.get(`/movie/${movie_id}`);
-  return data;
+  try {
+    const { data } = await axios.get(`/movie/${movie_id}`);
+    return data;
+  } catch (error) {
+    toast.error(error.message);
+  }
 };
 
 export const getReviews = async movie_id => {
-  const { data } = await axios.get(`/movie/${movie_id}/reviews`);
-  return data;
+  try {
+    const { data } = await axios.get(`/movie/${movie_id}/reviews`);
+    return data;
+  } catch (error) {
+    toast.error(error.message);
+  }
 };
 
 export const getCast = async movie_id => {
-  const { data } = await axios.get(`/movie/${movie_id}/credits`);
-  return data;
+  try {
+    const { data } = await axios.get(`/movie/${movie_id}/credits`);
+    return data;
+  } catch (error) {
+    toast.error(error.message);
+  }
 };
