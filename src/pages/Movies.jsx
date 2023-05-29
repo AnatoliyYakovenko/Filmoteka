@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { Pagination} from '@mui/material';
 
 import { MoviesContext } from 'context/MoviesContext';
 import {
@@ -16,6 +17,8 @@ import css from './Movies.module.css';
 
 export default function Movies() {
   const {
+    totalPages,
+    currentPage,
     allMovies,
     searchMovies,
     searchQuery,
@@ -31,6 +34,8 @@ export default function Movies() {
     setGenres,
     setReleaseYear,
     setIsFavorite,
+    setCurrentPage,
+    setTotalPages,
   } = useContext(MoviesContext);
 
   const [searchParams, setSearchParams] = useSearchParams({ query: '' });
@@ -38,21 +43,23 @@ export default function Movies() {
   const movieToSearch = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    getAllMovies(setAllMovies);
+    getAllMovies(currentPage, setAllMovies, setTotalPages, movieToSearch);
     getAllGenres(setGenres);
-  }, [setAllMovies, setGenres]);
+  }, [currentPage, setAllMovies, setGenres, setTotalPages, movieToSearch]);
 
   useEffect(() => {
     if (!movieToSearch) return;
     setSearchQuery(movieToSearch);
-    getMovieByQuery(movieToSearch).then(({ results }) => {
-      setSearchMovies(results);
-    });
-  }, [movieToSearch, setSearchQuery, setSearchMovies]);
+    getMovieByQuery(currentPage, movieToSearch, setSearchMovies, setTotalPages);
+  }, [currentPage, movieToSearch, setSearchQuery, setSearchMovies, setTotalPages]);
+
+
 
   const handleSubmit = event => {
     event.preventDefault();
     setIsFormSubmitted(true);
+    setCurrentPage(1);
+    setSearchMovies(null);
     setSearchParams({ query: searchQuery });
   };
   const handleGenreSelect = selectedGenres => {
@@ -102,6 +109,11 @@ export default function Movies() {
 
   const filteredMovies = filterMoviesByGenreAndYear(searchMovies || allMovies);
 
+  const handlePageChange = (event, page) => {
+    setCurrentPage(page);
+    getAllMovies(page, setAllMovies, setTotalPages, movieToSearch);
+  };
+
   return (
     <>
       <header className={css.Searchbar}>
@@ -148,7 +160,16 @@ export default function Movies() {
             </p>
           )
         )}
+          <Pagination
+  count={totalPages}
+  page={currentPage}
+  onChange={handlePageChange}
+  color="secondary"
+  size="large"
+  className={css.pagination}
+/>
       </main>
+
     </>
   );
 }

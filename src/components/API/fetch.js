@@ -6,19 +6,23 @@ axios.defaults.params = {
   api_key: 'fcf8166cc673f1c39affaebc2a2648bc',
 };
 
-export const getAllMovies = async onFetch => {
-  try {
-    const { data } = await axios.get('/discover/movie');
-    onFetch(data.results);
-  } catch (error) {
-    toast.error(error.message);
-  }
-};
-
 export const getAllGenres = async onFetch => {
   try {
     const { data } = await axios.get('/genre/movie/list');
     onFetch(data.genres);
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+export const getAllMovies = async (page, onFetch, totalPagesCallback) => {
+  try {
+    const { data } = await axios.get('/discover/movie', {
+      params: {
+        page: page,
+      },
+    });
+    onFetch(data.results);
+    totalPagesCallback(data.total_pages);
   } catch (error) {
     toast.error(error.message);
   }
@@ -37,14 +41,21 @@ export const getTrendingMovie = async () => {
   }
 };
 
-export const getMovieByQuery = async query => {
+export const getMovieByQuery = async (
+  page,
+  query,
+  onFetch,
+  totalPagesCallback
+) => {
   try {
     const { data } = await axios.get('/search/movie', {
       params: {
         query,
+        page: page,
       },
     });
-    return data;
+    onFetch(data.results);
+    totalPagesCallback(data.total_pages);
   } catch (error) {
     toast.error(error.message);
   }

@@ -109,7 +109,7 @@
   font-size: 14px;
   border: 1px solid #4b48da;
   border-radius: 24px 14px;
-  background-color: #fafafa;
+  background-color: #b8f7f5;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }

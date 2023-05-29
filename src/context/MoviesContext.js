@@ -11,6 +11,8 @@ export const MoviesProvider = ({ children }) => {
   const [genres, setGenres] = useState([]);
   const [releaseYear, setReleaseYear] = useState('');
   const [isFavorite, setIsFavorite] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   const contextValue = {
     allMovies,
@@ -21,6 +23,8 @@ export const MoviesProvider = ({ children }) => {
     genres,
     releaseYear,
     isFavorite,
+    currentPage,
+    totalPages,
     setAllMovies,
     setSearchMovies,
     setSearchQuery,
@@ -29,6 +33,8 @@ export const MoviesProvider = ({ children }) => {
     setGenres,
     setReleaseYear,
     setIsFavorite,
+    setCurrentPage,
+    setTotalPages,
   };
 
   return (
